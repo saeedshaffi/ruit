@@ -1,0 +1,136 @@
+/* Reconstruction of the current screens. Sizes follow what we measured on the live platform at 1440px. */
+.legacy { font-size: 14.5px; }
+.legacy .btn { cursor: default; }
+.lg-side { width: 240px; flex: none; display: flex; flex-direction: column; gap: 6px; padding: 0 8px 12px; background: #fff; border-right: 1px solid var(--line); position: relative; z-index: 5; transition: width 200ms; }
+.lg-side.is-collapsed { width: 73px; }
+.lg-label { white-space: nowrap; }
+.is-collapsed .lg-label { display: none; }
+/* The wordmark and the mark are two different elements in two different places. That is the jump. */
+.lg-logo { position: relative; height: 56px; flex: none; }
+.lg-logo .logo { position: absolute; left: 46px; top: 8px; font-size: 27px; }
+.lg-logo .lg-mark { left: 15px; top: 14px; font-size: 22px; }
+.lg-bell { position: absolute; right: 2px; top: 6px; display: grid; place-items: center; width: 40px; height: 36px; border-radius: 8px; background: var(--sunken); }
+.lg-bell svg { width: 18px; }
+.is-collapsed .lg-logo { height: 92px; }
+.is-collapsed .lg-bell { right: auto; left: 8px; top: 50px; }
+.lg-acct, .lg-search { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 12px; font-weight: 600; }
+.lg-acct svg { width: 14px; margin-left: auto; }
+.lg-search { border: 1px solid var(--line); border-radius: 8px; font-weight: 400; color: var(--ink-3); margin-bottom: 8px; }
+.lg-search svg { width: 18px; }
+.lg-search kbd { margin-left: auto; font: inherit; font-size: 11px; }
+.is-collapsed .lg-search { border: 0; }
+.lg-nav { display: grid; gap: 4px; }
+.lg-item { position: relative; }
+.lg-row { position: relative; display: flex; align-items: center; gap: 14px; width: 100%; height: 40px; padding: 0 12px 0 18px; border-radius: 8px; font-size: 15.5px; font-weight: 500; text-align: left; cursor: default; }
+.lg-row > svg:first-child { width: 22px; height: 22px; flex: none; }
+.lg-row:hover { background: var(--sunken); }
+.lg-row.is-active { background: var(--green-tint); color: var(--green-ink); }
+.lg-row.is-active::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 2px; background: var(--green); }
+.lg-chev { width: 16px; height: 16px; margin-left: auto; }
+.is-collapsed .lg-row .tip { display: none; }
+.is-collapsed .lg-row:hover .tip { display: block; position: absolute; left: 4px; top: calc(100% + 4px); z-index: 30; padding: 6px 10px; border-radius: 6px; background: #111; color: #fff; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.lg-fly { left: calc(100% + 10px); top: -2px; width: 300px; padding: 8px; }
+.lg-fly li { padding: 9px 12px; font-size: 14px; }
+.lg-sub { margin: 6px 0 4px 27px; padding-left: 0; border-left: 1px solid var(--line); }
+.lg-sub li { padding: 7px 0 7px 24px; font-size: 15px; color: var(--ink-2); }
+.lg-sub li.is-active { color: var(--green-ink); font-weight: 600; box-shadow: inset 3px 0 0 var(--green); }
+.lg-side-foot { margin-top: auto; display: grid; gap: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+.lg-help, .lg-conf { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; border-radius: 8px; font-weight: 600; }
+.lg-help { border: 1px solid var(--green); background: var(--green-tint); color: var(--green-ink); }
+.lg-conf { background: var(--sunken); }
+.lg-help svg, .lg-conf svg { width: 20px; flex: none; }
+.lg-toggle { top: 300px; translate: none; }
+
+.lg-head { gap: 8px; font-size: 17px; }
+.lg-head > svg { width: 16px; height: 16px; color: var(--ink-3); }
+.lg-crumb { color: var(--ink-2); }
+.lg-head .lg-crumb-icon { width: 18px; height: 18px; }
+.lg-card { position: relative; }
+.lg-fake { display: flex; align-items: center; color: var(--ink-3); border-radius: var(--r-pill); border-color: var(--line); }
+.lg-views { display: inline-flex; gap: 10px; padding: 8px 10px; border-radius: 8px; background: var(--sunken); }
+.lg-views svg { width: 18px; }
+.lg-table-wrap { position: relative; padding-bottom: 14px; min-height: 380px; }
+.lg-scroll { overflow: hidden; margin-right: 182px; }
+.lg-table { border-collapse: collapse; table-layout: fixed; width: 1282px; }
+.lg-table th { height: 46px; padding: 0 0 0 0; background: var(--sunken); font-size: 12.5px; font-weight: 500; color: var(--ink-2); text-align: left; line-height: 1.15; }
+.lg-table td { position: relative; height: 60px; border-top: 1px solid var(--line); font-size: 15px; white-space: nowrap; }
+.lg-table td:nth-child(2) { display: flex; align-items: center; gap: 8px; border-top: 0; box-shadow: inset 0 1px 0 var(--line); }
+.w-check { width: 90px; padding-left: 24px !important; } .lg-table td:first-child { padding-left: 24px; }
+.w-title { width: 280px; } .w-130 { width: 130px; } .w-150 { width: 150px; } .w-162 { width: 162px; } .w-190 { width: 190px; }
+.lg-box { display: block; width: 18px; height: 18px; border: 2px solid var(--ink-2); border-radius: 4px; }
+.lg-table .thumb { width: 48px; height: 48px; background: var(--sunken); margin-left: 6px; }
+.lg-table td svg { width: 14px; vertical-align: middle; }
+/* Edit icons are pinned to the far right of each cell and only show on row hover. */
+.lg-edit { position: absolute; right: 20px; top: 50%; translate: 0 -50%; display: none; place-items: center; width: 24px; height: 24px; border: 1px solid var(--ink-2); border-radius: 6px; }
+.lg-table tr:hover .lg-edit, .lg-table tr.is-hover .lg-edit { display: grid; }
+.lg-table tr.is-hover { background: #f7f7f5; }
+.lg-table tr.is-hover td:nth-child(2) { background: #ececea; }
+.lg-pinned { position: absolute; right: 0; top: 0; bottom: 14px; width: 182px; background: #fff; border-left: 1px solid var(--line); box-shadow: -6px 0 10px -8px rgb(0 0 0 / 0.18); }
+.lg-pin-head { height: 46px; display: flex; align-items: center; padding-left: 16px; background: var(--sunken); font-size: 12.5px; color: var(--ink-2); }
+.lg-pin-row { position: relative; height: 60px; display: flex; align-items: center; gap: 12px; padding-left: 16px; border-top: 1px solid var(--line); }
+.lg-pin-row > svg { width: 16px; }
+.lg-rowmenu { right: 20px; top: 46px; width: 200px; padding: 6px; }
+.lg-rowmenu li { padding: 7px 10px; font-size: 13.5px; }
+.lg-rowmenu li:first-child { color: var(--green-ink); font-weight: 600; }
+.lg-rowmenu li:last-child { color: var(--red); }
+.lg-hbar { position: absolute; left: 0; right: 182px; bottom: 3px; height: 7px; }
+.lg-hbar i { display: block; width: 78%; height: 100%; border-radius: 4px; background: #c9c9c6; }
+.lg-scrim { position: absolute; }
+.lg-modal { width: 900px; max-width: 100%; }
+.lg-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 24px 24px; }
+.lg-choices > div { display: grid; gap: 6px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #f7f7f5; }
+.lg-choices h3 { font-size: 17px; margin-top: 10px; }
+.lg-choices p { font-size: 12.5px; color: var(--ink-2); margin-bottom: 8px; }
+.lg-choices .btn { min-height: 44px; font-size: 15px; }
+.lg-ico { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--green-tint); }
+.lg-ico svg { width: 15px; }
+
+.lg-ai { display: flex; align-items: center; gap: 14px; flex: none; padding: 16px 16px 16px 18px; border-radius: 12px; background: var(--violet-tint); }
+.lg-ai > svg { width: 26px; height: 26px; flex: none; }
+.lg-ai > div { flex: 1; }
+.lg-ai b { font-size: 16px; } .lg-ai p { font-size: 13px; }
+.lg-ai-btn { border-color: transparent; background: rgb(255 255 255 / 0.55); color: var(--ink-2); border-radius: 8px; }
+.lg-form { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+.lg-summary { position: sticky; top: 0; }
+.lg-form-main { position: relative; display: grid; gap: 14px; }
+.lg-form h3 { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+.lg-form-main section { display: grid; gap: 14px; }
+.lg-form-main h3 + .hint { margin-top: -12px; }
+.lg-step { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; background: var(--sunken); font-size: 10px; font-style: normal; color: var(--ink-2); }
+.lg-drop { display: grid; justify-items: center; gap: 8px; padding: 46px; border: 2px dashed var(--ink-2); border-radius: 16px; }
+.lg-drop > svg { width: 52px; height: 52px; color: var(--ink-2); }
+.legacy .label { font-size: 13px; font-weight: 500; gap: 3px; }
+/* Help icons on the live form are about 10px. Reproduced at that size on purpose. */
+.lg-tip { width: 10px; height: 10px; color: var(--ink-3); }
+.lg-input { position: relative; display: flex; align-items: center; height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #f3f3f1; color: var(--ink-3); font-size: 15px; }
+.lg-input.filled { color: var(--ink); }
+.lg-input.tall { height: 96px; }
+.lg-select { justify-content: space-between; border-color: var(--ink-2); border-radius: 16px; background: #fff; }
+.lg-select svg { width: 16px; }
+/* The currency sign sits on the right border, as seen live. */
+.lg-suffix i { position: absolute; right: -3px; font-style: normal; font-weight: 600; color: var(--ink); }
+.lg-longtip { position: absolute; left: -38px; top: 24px; z-index: 20; padding: 9px 12px; border-radius: 4px; background: #111; color: #fff; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.lg-form .field { position: relative; }
+.lg-summary { display: grid; gap: 14px; }
+.lg-summary ul { display: grid; gap: 9px; }
+.lg-summary li { display: flex; align-items: center; gap: 9px; font-size: 15px; color: #2f8f0f; }
+.lg-summary li svg { width: 14px; height: 14px; color: var(--ink-2); }
+.lg-summary li.is-done { color: var(--ink); }
+.lg-tick { display: grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; background: #109a52; }
+.lg-tick svg { width: 9px !important; height: 9px !important; color: #fff !important; stroke-width: 4; }
+.lg-missing { display: flex; align-items: center; justify-content: center; gap: 8px; height: 40px; border: 1px solid #e0473f; border-radius: var(--r-pill); color: #d93a32; font-weight: 600; font-size: 15px; }
+.lg-missing svg { width: 15px; }
+.lg-toast { position: sticky; bottom: 14px; align-self: center; flex: none; z-index: 30; display: flex; align-items: flex-start; gap: 24px; width: 480px; padding: 14px 16px; border-radius: 6px; background: #fdeceb; color: #d93a32; font-size: 15px; box-shadow: 0 4px 14px rgb(0 0 0 / 0.16); }
+.lg-toast svg { width: 20px; flex: none; }
+.legacy .app-page { position: relative; }
+
+.lg-acct-bar { display: flex; align-items: center; gap: 10px; }
+.lg-acct-bar .hint { margin-right: auto; }
+.lg-green { color: #2f8f0f; font-weight: 600; font-size: 13px; }
+.lg-red { display: flex; align-items: center; gap: 6px; color: #d93a32; font-size: 13px; margin-top: 8px; }
+.lg-red svg { width: 14px; }
+.lg-acct-card { display: flex; align-items: flex-start; gap: 12px; }
+.lg-mk { display: grid; width: 130px; }
+.lg-mk b { font-size: 17px; }
+.lg-acct-main { display: grid; flex: 1; margin-left: 6px; }
+.lg-acct-main > b { font-size: 15.5px; }
