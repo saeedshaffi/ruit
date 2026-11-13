@@ -9,12 +9,14 @@ import { useDismiss } from '../ui'
 
 type Loc = { mode: 'intro' } | { mode: 'explore' } | { mode: 'issue'; n: number; view: 'original' | 'improved' }
 const parse = (): Loc => {
-  const [, a, b, c] = location.hash.split('/')
-  if (a === 'explore') return { mode: 'explore' }
-  if (a === 'issue') { const n = Math.min(issues.length, Math.max(1, parseInt(b) || 1)); return { mode: 'issue', n, view: c === 'improved' ? 'improved' : 'original' } }
+  // Plain hash names only (#issue-5-improved), so links survive hosts that drop #/paths.
+  const h = location.hash.slice(1)
+  if (h === 'explore') return { mode: 'explore' }
+  const m = h.match(/^issue-(\d+)(-improved)?$/)
+  if (m) return { mode: 'issue', n: Math.min(issues.length, Math.max(1, parseInt(m[1]))), view: m[2] ? 'improved' : 'original' }
   return { mode: 'intro' }
 }
-const href = (l: Loc) => (l.mode === 'issue' ? `#/issue/${l.n}${l.view === 'improved' ? '/improved' : ''}` : `#/${l.mode}`)
+const href = (l: Loc) => (l.mode === 'issue' ? `#issue-${l.n}${l.view === 'improved' ? '-improved' : ''}` : `#${l.mode}`)
 const FRAME_W = 1280
 
 export function AuditApp() {
@@ -74,7 +76,7 @@ function Review({ loc, go }: { loc: Extract<Loc, { mode: 'issue' }>; go: (l: Loc
   return (
     <div className="review chrome">
       <header className="bar">
-        <a className="bar-brand" href="#/intro">Ruit UX review</a>
+        <a className="bar-brand" href="#intro">Ruit UX review</a>
         <IssueIndex open={index} setOpen={setIndex} current={loc.n} go={go} />
         <p className="bar-where" aria-live="polite"><span className="num">{loc.n} of {issues.length}</span><span className="bar-area">{issue.area}</span></p>
         <div className="seg dark" role="group" aria-label="Version shown">
@@ -85,7 +87,7 @@ function Review({ loc, go }: { loc: Extract<Loc, { mode: 'issue' }>; go: (l: Loc
           <button type="button" className="cbtn" disabled={loc.n === 1} onClick={() => step(-1)}><ArrowLeft />Previous</button>
           <button type="button" className="cbtn" disabled={loc.n === issues.length} onClick={() => step(1)}>Next<ArrowRight /></button>
         </div>
-        <a className="cbtn ghost" href="#/explore"><Compass />Explore freely</a>
+        <a className="cbtn ghost" href="#explore"><Compass />Explore freely</a>
       </header>
       <div className="review-body">
         <div className="stage" ref={ref}>
@@ -168,7 +170,7 @@ function Explore({ go }: { go: (l: Loc) => void }) {
   return (
     <div className="review chrome">
       <header className="bar">
-        <a className="bar-brand" href="#/intro">Ruit UX review</a>
+        <a className="bar-brand" href="#intro">Ruit UX review</a>
         <p className="bar-where"><span>Exploring the improved flows</span><span className="bar-area">No audit notes. Sample data only. Nothing is saved.</span></p>
         <button type="button" className="cbtn" onClick={() => setRun(run + 1)}><RotateCcw />Reset sample data</button>
         <button type="button" className="cbtn solid" onClick={() => go({ mode: 'issue', n: 1, view: 'original' })}><ArrowLeft />Back to the review</button>

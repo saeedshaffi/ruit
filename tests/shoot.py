@@ -12,7 +12,7 @@ try:
         pg.on('pageerror', lambda e: errs.append(str(e)))
         for r in sys.argv[3:]:
             name = r.replace('/', '_').strip('_#') or 'intro'
-            pg.goto(f'http://localhost:4173/#/{r}'); pg.reload(); time.sleep(0.9)
+            pg.goto('http://localhost:4173/#' + r.replace('/', '-')); pg.reload(); time.sleep(0.9)
             pg.screenshot(path=f'tests/shots/{name}_{w}.jpg', type='jpeg', quality=72)
         print('errors:', errs)
         b.close()

@@ -8,7 +8,7 @@ def check(name, cond, detail=''):
     results.append((name, bool(cond), detail)); print(('PASS ' if cond else 'FAIL ') + name + (f'  [{detail}]' if detail and not cond else ''))
 
 def open_at(pg, route):
-    pg.goto(BASE + '#/' + route); pg.reload(); pg.wait_for_timeout(350)
+    pg.goto(BASE + '#' + route.replace('/', '-')); pg.reload(); pg.wait_for_timeout(350)
 
 def run(pg):
     # ---- 9. Audit navigation, annotations, current versus improved ----
@@ -18,10 +18,10 @@ def run(pg):
     pg.get_by_role('button', name='Next', exact=True).click(); pg.wait_for_timeout(200)
     check('audit: Next moves to 2 of 17', '2 of 17' in pg.locator('.bar-where').inner_text())
     pg.get_by_role('button', name='See improvement').click(); pg.wait_for_timeout(200)
-    check('audit: improvement keeps position', '2 of 17' in pg.locator('.bar-where').inner_text() and pg.url.endswith('/issue/2/improved'))
+    check('audit: improvement keeps position', '2 of 17' in pg.locator('.bar-where').inner_text() and pg.url.endswith('#issue-2-improved'))
     check('audit: improved prototype is shown', pg.locator('.frame .side').count() == 1)
     pg.get_by_role('button', name='Back to the problem').click(); pg.wait_for_timeout(300)
-    check('audit: can return to the problem', pg.url.endswith('/issue/2') and pg.locator('.spot-note').count() == 1)
+    check('audit: can return to the problem', pg.url.endswith('#issue-2') and pg.locator('.spot-note').count() == 1)
     pg.get_by_role('button', name='All issues').click()
     check('audit: index lists every issue', pg.locator('#issue-index li').count() == 17)
     pg.locator('#issue-index li button').nth(11).click(); pg.wait_for_timeout(200)
